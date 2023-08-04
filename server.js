@@ -26,8 +26,16 @@ const __dirname = path.dirname(__filename);
 const app = express();
 
 //middelwares
-app.use(cors());
-app.use(express.json());
+app.use(cors(
+  {
+    origin: ["https://zaurach-2d5nro8xy-gustiananda.vercel.app"],
+    methods: ["POST", "GET"],
+    credentials: true,
+
+  }
+));
+app.use(express.json())
+mongoose.connect('mongodb+srv://gustiananda210601:Barongusti21@cluster0.ykcqctz.mongodb.net/ecommerce');
 app.use(morgan("dev"));
 app.use(express.static(path.join(__dirname, "./client-app/build")));
 
